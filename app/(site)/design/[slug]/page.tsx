@@ -14,6 +14,8 @@ import { FEATURES, DESIGNS, getDesign, designPrice, similarDesigns, STYLES } fro
 import { getOccasion } from "@/lib/occasions";
 import { getTariff, formatPrice } from "@/lib/pricing";
 import { BLUR } from "@/lib/blur-data";
+import { getCardDemo, getDemo } from "@/lib/demos";
+import { ParticleLayer } from "@/components/ParticleLayer";
 import { SITE } from "@/lib/site";
 
 interface Props {
@@ -44,6 +46,10 @@ export default async function DesignPage({ params }: Props) {
   const occasion = getOccasion(design.occasion);
   const tariff = getTariff(design.tariff);
   const price = designPrice(design);
+  // Эффект фона из живого демо этого шаблона — для анимации превью
+  const demoEffect = design.demoSlug
+    ? (getDemo(design.demoSlug) ?? getCardDemo(design.demoSlug))
+    : undefined;
 
   return (
     <div
@@ -89,13 +95,20 @@ export default async function DesignPage({ params }: Props) {
                   priority
                   placeholder={BLUR[design.slug] ? "blur" : "empty"}
                   blurDataURL={BLUR[design.slug]}
-                  className="object-cover"
+                  className="animate-kenburns object-cover"
                 />
               ) : (
                 <DesignPreview design={design} className="h-full rounded-none aspect-auto!" />
               )}
+              {/* Тот же анимированный фон, что и в живом демо шаблона */}
+              <ParticleLayer
+                effect={demoEffect?.effect}
+                colors={demoEffect?.effectColors}
+                position="absolute"
+              />
               <span
-                className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent px-4 pb-6 pt-12 text-center font-display text-3xl font-medium text-white"
+                className="animate-fade-up pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent px-4 pb-6 pt-12 text-center font-display text-3xl font-medium text-white"
+                style={{ animationDelay: "250ms" }}
                 aria-hidden="true"
               >
                 {design.preview.caption}

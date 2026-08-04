@@ -40,11 +40,20 @@ export interface DemoConfig {
   /** Анимация фона (см. ParticleLayer) */
   effect?: "petals" | "snow" | "confetti" | "sparks" | "bokeh";
   effectColors?: string[];
+  /** Вид обложки: classic — текст, photo — фото на весь экран, arch — фото в арке */
+  heroStyle?: "classic" | "photo" | "arch";
+  /** Фото для обложки photo/arch */
+  heroPhoto?: { src: string; alt: string };
+  /** Стиль галереи: grid — сетка, polaroid — снимки вразброс, strip — лента */
+  galleryStyle?: "grid" | "polaroid" | "strip";
 }
 
 export const DEMOS: DemoConfig[] = [
   {
     slug: "tishina",
+    heroStyle: "arch",
+    galleryStyle: "grid",
+    heroPhoto: { src: "/templates/tishina.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#b09468"],
     designSlug: "tishina",
@@ -99,6 +108,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "konfetti",
+    heroStyle: "classic",
+    galleryStyle: "polaroid",
     effect: "confetti",
     effectColors: ["#e08a2e", "#5fae8a", "#5f8ecc", "#dd7693"],
     designSlug: "konfetti",
@@ -148,6 +159,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "gran",
+    heroStyle: "photo",
+    galleryStyle: "strip",
+    heroPhoto: { src: "/templates/gran.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#d0aa4e"],
     designSlug: "gran",
@@ -201,6 +215,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "elka",
+    heroStyle: "photo",
+    galleryStyle: "strip",
+    heroPhoto: { src: "/templates/girlyanda.webp", alt: "Обложка приглашения" },
     effect: "snow",
     effectColors: ["#ffffff"],
     designSlug: "girlyanda",
@@ -254,6 +271,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "sad",
+    heroStyle: "arch",
+    galleryStyle: "polaroid",
+    heroPhoto: { src: "/templates/sad.webp", alt: "Обложка приглашения" },
     effect: "petals",
     effectColors: ["#9db98a", "#c3d4ae"],
     designSlug: "sad",
@@ -304,6 +324,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "liniya",
+    heroStyle: "classic",
+    galleryStyle: "grid",
     effect: "bokeh",
     effectColors: ["#b39869"],
     designSlug: "liniya",
@@ -354,6 +376,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "kosmos",
+    heroStyle: "photo",
+    galleryStyle: "strip",
+    heroPhoto: { src: "/templates/kosmos.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#cfd8ff", "#8fa3ff"],
     designSlug: "kosmos",
@@ -400,6 +425,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "polnoch",
+    heroStyle: "photo",
+    galleryStyle: "grid",
+    heroPhoto: { src: "/templates/polnoch.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#c8a45e"],
     designSlug: "polnoch",
@@ -449,6 +477,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "pion",
+    heroStyle: "arch",
+    galleryStyle: "grid",
+    heroPhoto: { src: "/templates/pion.webp", alt: "Обложка приглашения" },
     effect: "petals",
     effectColors: ["#e8a6bc", "#dd8aa4"],
     designSlug: "pion",
@@ -494,6 +525,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "disko",
+    heroStyle: "photo",
+    galleryStyle: "polaroid",
+    heroPhoto: { src: "/templates/disko.webp", alt: "Обложка приглашения" },
     effect: "confetti",
     effectColors: ["#e05c9c", "#8a5cd6", "#4cc9f0"],
     designSlug: "disko",
@@ -543,6 +577,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "aist",
+    heroStyle: "arch",
+    galleryStyle: "grid",
+    heroPhoto: { src: "/templates/aist.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#9cc4b4"],
     designSlug: "aist",
@@ -588,6 +625,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "sekret",
+    heroStyle: "classic",
+    galleryStyle: "polaroid",
     effect: "confetti",
     effectColors: ["#a8c8ec", "#f2b8cc"],
     designSlug: "sekret",
@@ -633,6 +672,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "protokol",
+    heroStyle: "photo",
+    galleryStyle: "strip",
+    heroPhoto: { src: "/templates/protokol.webp", alt: "Обложка приглашения" },
     designSlug: "protokol",
     pageTitle: "Vektor Forum 2027 — приглашение",
     theme: {
@@ -679,6 +721,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "priznanie",
+    heroStyle: "arch",
+    galleryStyle: "polaroid",
+    heroPhoto: { src: "/templates/priznanie.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#d09aa4"],
     designSlug: "priznanie",
@@ -726,6 +771,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "zvonok",
+    heroStyle: "photo",
+    galleryStyle: "polaroid",
+    heroPhoto: { src: "/templates/zvonok.webp", alt: "Обложка приглашения" },
     effect: "confetti",
     effectColors: ["#5f8ecc", "#e8b45a"],
     designSlug: "zvonok",
@@ -773,6 +821,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "shariki",
+    heroStyle: "classic",
+    galleryStyle: "polaroid",
     effect: "confetti",
     effectColors: ["#e28ab0", "#8ac2e2", "#f2d488"],
     designSlug: "shariki",
@@ -819,6 +869,9 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "svet",
+    heroStyle: "arch",
+    galleryStyle: "grid",
+    heroPhoto: { src: "/templates/svet.webp", alt: "Обложка приглашения" },
     effect: "bokeh",
     effectColors: ["#cfd8c4"],
     designSlug: "svet",

@@ -27,35 +27,135 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
       }}
     >
       <ParticleLayer effect={demo.effect} colors={demo.effectColors} />
-      <main className="mx-auto max-w-lg px-5 pb-16">
-        {/* Обложка */}
-        <header className="flex min-h-dvh flex-col items-center justify-center py-16 text-center">
-          <p className="animate-fade-up text-xs uppercase tracking-[0.35em]" style={{ color: t.muted }}>
-            {demo.hero.eyebrow}
-          </p>
-          <h1
-            className="animate-fade-up mt-6 text-5xl font-medium leading-tight sm:text-6xl"
-            style={{ fontFamily: displayFont, animationDelay: "120ms" }}
-          >
-            {demo.hero.title}
-          </h1>
-          <p
-            className="animate-fade-up mt-5 max-w-xs text-sm leading-relaxed"
-            style={{ color: t.muted, animationDelay: "240ms" }}
-          >
-            {demo.hero.subtitle}
-          </p>
-          <p
-            className="animate-fade-up mt-8 rounded-full border px-6 py-2.5 text-sm tracking-wide"
-            style={{ borderColor: `${t.ink}33`, animationDelay: "360ms" }}
-          >
-            {demo.hero.dateLabel}
-          </p>
-          <MusicToggle demo={demo} />
-          <span className="mt-12 animate-float-slow text-xl" aria-hidden="true" style={{ color: t.muted }}>
-            ↓
-          </span>
+
+      {/* Обложка на весь экран с фото — вне колонки, чтобы фото было full-bleed */}
+      {demo.heroStyle === "photo" && demo.heroPhoto && (
+        <header className="relative flex min-h-dvh flex-col items-center justify-end overflow-hidden px-5 pb-16 text-center">
+          <div className="absolute inset-0" aria-hidden="true">
+            <Image
+              src={demo.heroPhoto.src}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="animate-kenburns object-cover"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(180deg, ${t.bg}00 20%, ${t.bg}cc 75%, ${t.bg} 100%)`,
+              }}
+            />
+          </div>
+          <div className="relative z-10 flex flex-col items-center">
+            <p className="animate-fade-up text-xs uppercase tracking-[0.35em]">
+              {demo.hero.eyebrow}
+            </p>
+            <h1
+              className="animate-fade-up mt-5 text-5xl font-medium leading-tight sm:text-6xl"
+              style={{ fontFamily: displayFont, animationDelay: "120ms" }}
+            >
+              {demo.hero.title}
+            </h1>
+            <p
+              className="animate-fade-up mt-4 max-w-xs text-sm leading-relaxed"
+              style={{ color: t.muted, animationDelay: "240ms" }}
+            >
+              {demo.hero.subtitle}
+            </p>
+            <p
+              className="animate-fade-up mt-7 rounded-full px-6 py-2.5 text-sm tracking-wide"
+              style={{ background: `${t.card}dd`, animationDelay: "360ms" }}
+            >
+              {demo.hero.dateLabel}
+            </p>
+            <MusicToggle demo={demo} />
+          </div>
         </header>
+      )}
+
+      <main className="mx-auto max-w-lg px-5 pb-16">
+        {/* Обложка: фото в арке */}
+        {demo.heroStyle === "arch" && demo.heroPhoto && (
+          <header className="flex min-h-dvh flex-col items-center justify-center py-14 text-center">
+            <p className="animate-fade-up text-xs uppercase tracking-[0.35em]" style={{ color: t.muted }}>
+              {demo.hero.eyebrow}
+            </p>
+            <div
+              className="animate-fade-up relative mt-7 w-60 overflow-hidden border sm:w-64"
+              style={{
+                animationDelay: "120ms",
+                borderColor: `${t.ink}2e`,
+                borderRadius: "10rem 10rem 1.2rem 1.2rem",
+                padding: "0.55rem",
+              }}
+            >
+              <div
+                className="relative aspect-[3/4.1] overflow-hidden"
+                style={{ borderRadius: "9.5rem 9.5rem 0.8rem 0.8rem" }}
+              >
+                <Image
+                  src={demo.heroPhoto.src}
+                  alt=""
+                  fill
+                  priority
+                  sizes="256px"
+                  className="animate-kenburns object-cover"
+                />
+              </div>
+            </div>
+            <h1
+              className="animate-fade-up mt-7 text-4xl font-medium leading-tight sm:text-5xl"
+              style={{ fontFamily: displayFont, animationDelay: "240ms" }}
+            >
+              {demo.hero.title}
+            </h1>
+            <p
+              className="animate-fade-up mt-4 max-w-xs text-sm leading-relaxed"
+              style={{ color: t.muted, animationDelay: "340ms" }}
+            >
+              {demo.hero.subtitle}
+            </p>
+            <p
+              className="animate-fade-up mt-6 rounded-full border px-6 py-2.5 text-sm tracking-wide"
+              style={{ borderColor: `${t.ink}33`, animationDelay: "440ms" }}
+            >
+              {demo.hero.dateLabel}
+            </p>
+            <MusicToggle demo={demo} />
+          </header>
+        )}
+
+        {/* Обложка: классическая текстовая */}
+        {(demo.heroStyle ?? "classic") === "classic" && (
+          <header className="flex min-h-dvh flex-col items-center justify-center py-16 text-center">
+            <p className="animate-fade-up text-xs uppercase tracking-[0.35em]" style={{ color: t.muted }}>
+              {demo.hero.eyebrow}
+            </p>
+            <h1
+              className="animate-fade-up mt-6 text-5xl font-medium leading-tight sm:text-6xl"
+              style={{ fontFamily: displayFont, animationDelay: "120ms" }}
+            >
+              {demo.hero.title}
+            </h1>
+            <p
+              className="animate-fade-up mt-5 max-w-xs text-sm leading-relaxed"
+              style={{ color: t.muted, animationDelay: "240ms" }}
+            >
+              {demo.hero.subtitle}
+            </p>
+            <p
+              className="animate-fade-up mt-8 rounded-full border px-6 py-2.5 text-sm tracking-wide"
+              style={{ borderColor: `${t.ink}33`, animationDelay: "360ms" }}
+            >
+              {demo.hero.dateLabel}
+            </p>
+            <MusicToggle demo={demo} />
+            <span className="mt-12 animate-float-slow text-xl" aria-hidden="true" style={{ color: t.muted }}>
+              ↓
+            </span>
+          </header>
+        )}
 
         {/* Обращение */}
         <Reveal as="section" className="py-12 text-center">
@@ -76,37 +176,11 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
           <Countdown dateISO={demo.dateISO} theme={t} />
         </Reveal>
 
-        {/* Галерея */}
+        {/* Галерея: сетка / полароиды / горизонтальная лента */}
         <Reveal as="section" className="py-12">
           <SectionTitle t={t}>наша галерея</SectionTitle>
-          <div className="grid grid-cols-2 gap-3">
-            {demo.gallery.map((g, i) => (
-              <figure key={i}>
-                {g.src ? (
-                  <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl">
-                    <Image
-                      src={g.src}
-                      alt={g.alt ?? g.label}
-                      fill
-                      sizes="(max-width: 640px) 45vw, 250px"
-                      className="object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="aspect-4/5 w-full rounded-2xl"
-                    style={{ background: `linear-gradient(150deg, ${g.from}, ${g.to})` }}
-                    role="img"
-                    aria-label={`Фото: ${g.label}`}
-                  />
-                )}
-                <figcaption className="mt-1.5 text-xs" style={{ color: t.muted }}>
-                  {g.label}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <p className="mt-3 text-center text-xs" style={{ color: t.muted }}>
+          <Gallery demo={demo} />
+          <p className="mt-4 text-center text-xs" style={{ color: t.muted }}>
             Фотографии — для примера: в вашем приглашении будут ваши снимки
           </p>
         </Reveal>
@@ -199,6 +273,98 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
           </Link>
         </footer>
       </main>
+    </div>
+  );
+}
+
+function GalleryPhoto({
+  g,
+  className = "",
+}: {
+  g: DemoConfig["gallery"][number];
+  className?: string;
+}) {
+  return g.src ? (
+    <div className={`relative overflow-hidden ${className}`}>
+      <Image
+        src={g.src}
+        alt={g.alt ?? g.label}
+        fill
+        sizes="(max-width: 640px) 60vw, 280px"
+        className="object-cover"
+      />
+    </div>
+  ) : (
+    <div
+      className={className}
+      style={{ background: `linear-gradient(150deg, ${g.from}, ${g.to})` }}
+      role="img"
+      aria-label={`Фото: ${g.label}`}
+    />
+  );
+}
+
+function Gallery({ demo }: { demo: DemoConfig }) {
+  const t = demo.theme;
+  const style = demo.galleryStyle ?? "grid";
+
+  if (style === "polaroid") {
+    // Снимки «вразброс» с белыми рамками и рукописными подписями
+    const tilts = ["-rotate-3", "rotate-2", "rotate-3", "-rotate-2"];
+    return (
+      <div className="grid grid-cols-2 gap-x-3 gap-y-6 px-2">
+        {demo.gallery.map((g, i) => (
+          <figure
+            key={i}
+            className={`${tilts[i % tilts.length]} bg-white p-2 pb-2.5 shadow-lg transition-transform duration-300 hover:rotate-0 ${i % 2 ? "translate-y-3" : ""}`}
+          >
+            <GalleryPhoto g={g} className="aspect-square w-full" />
+            <figcaption
+              className="mt-2 text-center text-sm text-neutral-700"
+              style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic" }}
+            >
+              {g.label}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    );
+  }
+
+  if (style === "strip") {
+    // Горизонтальная лента со snap-прокруткой
+    return (
+      <div>
+        <div className="thin-scroll -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2">
+          {demo.gallery.map((g, i) => (
+            <figure key={i} className="w-[68%] shrink-0 snap-center">
+              <GalleryPhoto g={g} className="aspect-3/4 w-full rounded-2xl" />
+              <figcaption className="mt-2 text-sm" style={{ color: t.muted }}>
+                <span className="mr-2 font-semibold" style={{ color: t.accent }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {g.label}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mt-1 text-center text-xs" style={{ color: t.muted }}>
+          листайте →
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {demo.gallery.map((g, i) => (
+        <figure key={i}>
+          <GalleryPhoto g={g} className="aspect-4/5 w-full rounded-2xl" />
+          <figcaption className="mt-1.5 text-xs" style={{ color: t.muted }}>
+            {g.label}
+          </figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
