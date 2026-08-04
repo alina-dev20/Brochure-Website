@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+}
+
+:root {
+  --bg: #f7f5f1;
+  --fg: #16140f;
+  --muted: #6d685d;
+  --card: #fffdf9;
+  --line: #e6e1d6;
+  --accent: #b0532a;
+  --accent-fg: #ffffff;
+  --accent-soft: color-mix(in oklab, var(--accent) 11%, transparent);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #131211;
+  --fg: #f1ede5;
+  --muted: #a49e91;
+  --card: #1c1a18;
+  --line: #2b2823;
+  --accent: #d97a4a;
+  --accent-fg: #16140f;
+  --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* ---- Зерно (grain) поверх всего сайта ---- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dark body::after {
+  opacity: 0.07;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- Reveal при скролле ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Кастомный курсор (только точные указатели) ---- */
+@media (pointer: fine) {
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    pointer-events: none;
+    border-radius: 50%;
+    translate: -50% -50%;
+  }
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+  }
+  .cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1px solid color-mix(in oklab, var(--accent) 55%, transparent);
+    transition:
+      width 0.25s ease,
+      height 0.25s ease,
+      background-color 0.25s ease,
+      opacity 0.25s ease;
+  }
+  .cursor-ring.is-hover {
+    width: 56px;
+    height: 56px;
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+}
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ---- Анимации ---- */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes demo-scroll {
+  0%,
+  10% {
+    transform: translateY(0);
+  }
+  28%,
+  40% {
+    transform: translateY(-25%);
+  }
+  56%,
+  68% {
+    transform: translateY(-50%);
+  }
+  86%,
+  100% {
+    transform: translateY(-74%);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-demo-scroll {
+  animation: demo-scroll 14s ease-in-out infinite;
+}
+
+/* Без JavaScript reveal-блоки остаются видимыми */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Уважение reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Типографика ---- */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.text-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---- Мокап телефона ---- */
+.phone-frame {
+  border-radius: 2.6rem;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow:
+    0 24px 60px -20px rgb(0 0 0 / 0.28),
+    0 0 0 8px color-mix(in oklab, var(--fg) 6%, transparent);
+}
+
+/* Тонкий скроллбар для внутренних прокруток */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
