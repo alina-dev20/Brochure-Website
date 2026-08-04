@@ -129,7 +129,7 @@ export const DESIGNS: Design[] = [
     editable: ["Тексты и фото", "Оттенки зелени и бумаги", "Доп. блоки"],
     fixed: ["Иллюстрации"],
     popularity: 88,
-    demoSlug: "tishina",
+    demoSlug: "sad",
     preview: {
       from: "#e6ead9",
       to: "#c6d1b4",
@@ -152,7 +152,7 @@ export const DESIGNS: Design[] = [
     editable: ["Имена и тексты", "6 фото", "Дата и адрес"],
     fixed: ["Структура", "Цвета, шрифты", "Без музыки и галереи-слайдера"],
     popularity: 74,
-    demoSlug: "tishina",
+    demoSlug: "liniya",
     preview: {
       from: "#f3efe8",
       to: "#e2dbcd",
@@ -199,7 +199,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Иллюстрации планет", "Тёмная гамма"],
     popularity: 81,
     isNew: true,
-    demoSlug: "konfetti",
+    demoSlug: "kosmos",
     preview: {
       from: "#1d2440",
       to: "#0f1226",
@@ -222,7 +222,7 @@ export const DESIGNS: Design[] = [
     editable: ["Имя и цифра", "Тексты", "3 фото"],
     fixed: ["Тёмная гамма", "Структура"],
     popularity: 78,
-    demoSlug: "gran",
+    demoSlug: "polnoch",
     preview: {
       from: "#23212b",
       to: "#141319",
@@ -268,7 +268,7 @@ export const DESIGNS: Design[] = [
     editable: ["Имена и тексты", "Фото", "Оттенок цветов"],
     fixed: ["Иллюстрации", "Структура"],
     popularity: 70,
-    demoSlug: "tishina",
+    demoSlug: "pion",
     preview: {
       from: "#f6e3e6",
       to: "#e8c2ca",
@@ -291,7 +291,7 @@ export const DESIGNS: Design[] = [
     editable: ["Тексты", "Программа вечера", "Цвет неона"],
     fixed: ["Структура", "Ретро-гамма"],
     popularity: 66,
-    demoSlug: "elka",
+    demoSlug: "disko",
     preview: {
       from: "#2a1e3f",
       to: "#161028",
@@ -314,7 +314,7 @@ export const DESIGNS: Design[] = [
     editable: ["Тексты", "Пол/нейтральная гамма", "Wish-list"],
     fixed: ["Иллюстрации"],
     popularity: 62,
-    demoSlug: "konfetti",
+    demoSlug: "aist",
     preview: {
       from: "#e3efe9",
       to: "#c8e0d4",
@@ -338,7 +338,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Двухцветная механика"],
     popularity: 71,
     isNew: true,
-    demoSlug: "konfetti",
+    demoSlug: "sekret",
     preview: {
       from: "#bcd7f2",
       to: "#f2c3d4",
@@ -384,7 +384,7 @@ export const DESIGNS: Design[] = [
     editable: ["Все тексты", "Фирменные цвета и логотип", "Программа, спикеры"],
     fixed: ["Типографика"],
     popularity: 58,
-    demoSlug: "gran",
+    demoSlug: "protokol",
     preview: {
       from: "#e8ebef",
       to: "#cfd6de",
@@ -407,7 +407,7 @@ export const DESIGNS: Design[] = [
     editable: ["История по датам", "Фото", "Финальный вопрос"],
     fixed: ["Структура таймлайна"],
     popularity: 77,
-    demoSlug: "tishina",
+    demoSlug: "priznanie",
     preview: {
       from: "#f0e0dc",
       to: "#dcc0ba",
@@ -430,7 +430,7 @@ export const DESIGNS: Design[] = [
     editable: ["Фото", "Текст", "Подпись"],
     fixed: ["Одна страница", "Без музыки и RSVP"],
     popularity: 89,
-    demoSlug: "otkrytka",
+    demoSlug: "polaroid",
     preview: {
       from: "#f4f1ea",
       to: "#e0dacc",
@@ -454,7 +454,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Структура"],
     popularity: 54,
     isNew: true,
-    demoSlug: "elka",
+    demoSlug: "zvonok",
     preview: {
       from: "#dfe9f2",
       to: "#bcd2e4",
@@ -504,7 +504,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 72,
     isNew: true,
-    demoSlug: "otkrytka",
+    demoSlug: "mimoza",
     preview: {
       from: "#f6e6ec",
       to: "#eac6d4",
@@ -528,7 +528,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 68,
     isNew: true,
-    demoSlug: "otkrytka",
+    demoSlug: "hvoya",
     preview: {
       from: "#e3ebe6",
       to: "#c2d4c8",
@@ -552,7 +552,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 61,
     isNew: true,
-    demoSlug: "otkrytka",
+    demoSlug: "dvoe",
     preview: {
       from: "#ece5da",
       to: "#d4c6b2",
@@ -576,7 +576,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 58,
     isNew: true,
-    demoSlug: "otkrytka",
+    demoSlug: "spasibo",
     preview: {
       from: "#eae7f0",
       to: "#cfc9dd",
@@ -600,7 +600,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 55,
     isNew: true,
-    demoSlug: "otkrytka",
+    demoSlug: "kollege",
     preview: {
       from: "#d9ecec",
       to: "#aed4d6",
@@ -650,7 +650,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница", "Механика анимации"],
     popularity: 69,
     isNew: true,
-    demoSlug: "ogonki",
+    demoSlug: "lepestki",
     preview: {
       from: "#f4dfe2",
       to: "#e4b8c0",
@@ -676,7 +676,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Структура", "Цвета"],
     popularity: 73,
     isNew: true,
-    demoSlug: "konfetti",
+    demoSlug: "shariki",
     preview: {
       from: "#f6e4ea",
       to: "#e8c2cf",
@@ -700,7 +700,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Светлая гамма", "Структура"],
     popularity: 57,
     isNew: true,
-    demoSlug: "tishina",
+    demoSlug: "svet",
     preview: {
       from: "#eff0ea",
       to: "#d8dbd0",

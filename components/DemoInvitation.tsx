@@ -111,7 +111,7 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
 
         {/* Тайминг */}
         <Reveal as="section" className="py-12">
-          <SectionTitle t={t}>программа дня</SectionTitle>
+          <SectionTitle t={t}>{demo.timingTitle ?? "программа дня"}</SectionTitle>
           <ol className="relative ml-3 border-l" style={{ borderColor: `${t.ink}26` }}>
             {demo.timing.map((item) => (
               <li key={item.time} className="relative mb-6 pl-6 last:mb-0">
