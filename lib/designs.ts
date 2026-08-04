@@ -430,6 +430,7 @@ export const DESIGNS: Design[] = [
     editable: ["Фото", "Текст", "Подпись"],
     fixed: ["Одна страница", "Без музыки и RSVP"],
     popularity: 89,
+    demoSlug: "otkrytka",
     preview: {
       from: "#f4f1ea",
       to: "#e0dacc",
@@ -479,6 +480,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 87,
     isNew: true,
+    demoSlug: "otkrytka",
     preview: {
       from: "#f2e3d0",
       to: "#e0c7a4",
@@ -502,6 +504,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 72,
     isNew: true,
+    demoSlug: "otkrytka",
     preview: {
       from: "#f6e6ec",
       to: "#eac6d4",
@@ -525,6 +528,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 68,
     isNew: true,
+    demoSlug: "otkrytka",
     preview: {
       from: "#e3ebe6",
       to: "#c2d4c8",
@@ -548,6 +552,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 61,
     isNew: true,
+    demoSlug: "otkrytka",
     preview: {
       from: "#ece5da",
       to: "#d4c6b2",
@@ -571,6 +576,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 58,
     isNew: true,
+    demoSlug: "otkrytka",
     preview: {
       from: "#eae7f0",
       to: "#cfc9dd",
@@ -594,6 +600,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница"],
     popularity: 55,
     isNew: true,
+    demoSlug: "otkrytka",
     preview: {
       from: "#d9ecec",
       to: "#aed4d6",
@@ -619,6 +626,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница", "Механика анимации"],
     popularity: 76,
     isNew: true,
+    demoSlug: "ogonki",
     preview: {
       from: "#2b2333",
       to: "#171221",
@@ -642,6 +650,7 @@ export const DESIGNS: Design[] = [
     fixed: ["Одна страница", "Механика анимации"],
     popularity: 69,
     isNew: true,
+    demoSlug: "ogonki",
     preview: {
       from: "#f4dfe2",
       to: "#e4b8c0",

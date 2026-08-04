@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import { OCCASIONS } from "@/lib/occasions";
 import { DESIGNS } from "@/lib/designs";
-import { DEMOS } from "@/lib/demos";
+import { CARD_DEMOS, DEMOS } from "@/lib/demos";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => `${SITE.url}${path}`;
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       changeFrequency: "monthly" as const,
     })),
-    ...DEMOS.map((d) => ({
+    ...[...DEMOS, ...CARD_DEMOS].map((d) => ({
       url: url(`/demo/${d.slug}`),
       priority: 0.5,
       changeFrequency: "monthly" as const,

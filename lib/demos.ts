@@ -244,3 +244,70 @@ export const DEMOS: DemoConfig[] = [
 export function getDemo(slug: string): DemoConfig | undefined {
   return DEMOS.find((d) => d.slug === slug);
 }
+
+/* ------------------------------------------------------------------ */
+/* Демо-открытки: одностраничный формат для тарифов «Фотокарточка»
+   и «Открытка с анимацией» (рендерится компонентом DemoCard).        */
+
+export interface CardDemoConfig {
+  slug: string;
+  designSlug: string;
+  pageTitle: string;
+  photo: { src: string; alt: string };
+  eyebrow: string;
+  title: string;
+  /** Строки поздравления — появляются по очереди */
+  lines: string[];
+  signature: string;
+  /** Есть только у «Открытки с анимацией» */
+  music?: { tempo: number; notes: number[] };
+  theme: { overlay: string; ink: string; accent: string; accentInk: string };
+}
+
+export const CARD_DEMOS: CardDemoConfig[] = [
+  {
+    slug: "otkrytka",
+    designSlug: "svecha",
+    pageTitle: "Ирине — с днём рождения (демо открытки)",
+    photo: { src: "/templates/svecha.webp", alt: "Именинный торт с горящими свечами" },
+    eyebrow: "с днём рождения",
+    title: "Ирина, с праздником!",
+    lines: [
+      "Пусть в этом году сбудется то, о чём ты боялась даже загадывать.",
+      "Спасибо, что ты есть — рядом с тобой любой день становится лучше.",
+      "Обнимаем крепко и ждём на торт!",
+    ],
+    signature: "— твои Соколовы",
+    theme: {
+      overlay: "#1a1208",
+      ink: "#f6efe2",
+      accent: "#e0a94e",
+      accentInk: "#241708",
+    },
+  },
+  {
+    slug: "ogonki",
+    designSlug: "ogonki",
+    pageTitle: "Мама, с юбилеем! (демо открытки с анимацией)",
+    photo: { src: "/templates/ogonki.webp", alt: "Бенгальский огонь в руке в сумерках" },
+    eyebrow: "с юбилеем",
+    title: "Мама, это тебе",
+    lines: [
+      "Ты научила нас главному — радоваться простым вещам.",
+      "Пусть эти огоньки горят так же долго, как твоё терпение к нам.",
+      "Любим бесконечно. Сегодня празднуем тебя!",
+    ],
+    signature: "— Аня, Дима и внуки",
+    music: { tempo: 76, notes: [293.66, 369.99, 440.0, 587.33, 440.0, 369.99] },
+    theme: {
+      overlay: "#121022",
+      ink: "#f0ecfa",
+      accent: "#e8b45a",
+      accentInk: "#241a08",
+    },
+  },
+];
+
+export function getCardDemo(slug: string): CardDemoConfig | undefined {
+  return CARD_DEMOS.find((d) => d.slug === slug);
+}
