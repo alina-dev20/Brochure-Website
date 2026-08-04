@@ -37,11 +37,16 @@ export interface DemoConfig {
   gallery: { from: string; to: string; label: string; src?: string; alt?: string }[];
   music: { tempo: number; notes: number[] };
   rsvp: { deadline: string; question: string };
+  /** Анимация фона (см. ParticleLayer) */
+  effect?: "petals" | "snow" | "confetti" | "sparks" | "bokeh";
+  effectColors?: string[];
 }
 
 export const DEMOS: DemoConfig[] = [
   {
     slug: "tishina",
+    effect: "bokeh",
+    effectColors: ["#b09468"],
     designSlug: "tishina",
     pageTitle: "Дарья и Марк — приглашение на свадьбу",
     theme: {
@@ -94,6 +99,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "konfetti",
+    effect: "confetti",
+    effectColors: ["#e08a2e", "#5fae8a", "#5f8ecc", "#dd7693"],
     designSlug: "konfetti",
     pageTitle: "Мише 6 лет — приглашение на день рождения",
     theme: {
@@ -141,6 +148,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "gran",
+    effect: "bokeh",
+    effectColors: ["#d0aa4e"],
     designSlug: "gran",
     pageTitle: "Юбилей Виктора Петровича — 50 лет",
     theme: {
@@ -192,6 +201,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "elka",
+    effect: "snow",
+    effectColors: ["#ffffff"],
     designSlug: "girlyanda",
     pageTitle: "Новогодний вечер Aurora Team",
     theme: {
@@ -243,6 +254,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "sad",
+    effect: "petals",
+    effectColors: ["#9db98a", "#c3d4ae"],
     designSlug: "sad",
     pageTitle: "Алина и Игорь — свадьба в саду",
     theme: {
@@ -291,6 +304,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "liniya",
+    effect: "bokeh",
+    effectColors: ["#b39869"],
     designSlug: "liniya",
     pageTitle: "Елена и Сергей — приглашение на свадьбу",
     theme: {
@@ -339,6 +354,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "kosmos",
+    effect: "bokeh",
+    effectColors: ["#cfd8ff", "#8fa3ff"],
     designSlug: "kosmos",
     pageTitle: "Тимуру 8 лет — космическая вечеринка",
     theme: {
@@ -383,6 +400,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "polnoch",
+    effect: "bokeh",
+    effectColors: ["#c8a45e"],
     designSlug: "polnoch",
     pageTitle: "Андрею — 35. Вечер в баре",
     theme: {
@@ -430,6 +449,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "pion",
+    effect: "petals",
+    effectColors: ["#e8a6bc", "#dd8aa4"],
     designSlug: "pion",
     pageTitle: "Мария и Павел — помолвка",
     theme: {
@@ -473,6 +494,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "disko",
+    effect: "confetti",
+    effectColors: ["#e05c9c", "#8a5cd6", "#4cc9f0"],
     designSlug: "disko",
     pageTitle: "Девичник Кати — диско-вечер",
     theme: {
@@ -520,6 +543,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "aist",
+    effect: "bokeh",
+    effectColors: ["#9cc4b4"],
     designSlug: "aist",
     pageTitle: "Baby shower — ждём Соню",
     theme: {
@@ -563,6 +588,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "sekret",
+    effect: "confetti",
+    effectColors: ["#a8c8ec", "#f2b8cc"],
     designSlug: "sekret",
     pageTitle: "Гендер-пати — мальчик или девочка?",
     theme: {
@@ -652,6 +679,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "priznanie",
+    effect: "bokeh",
+    effectColors: ["#d09aa4"],
     designSlug: "priznanie",
     pageTitle: "Кате. Пролистай до конца",
     theme: {
@@ -697,6 +726,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "zvonok",
+    effect: "confetti",
+    effectColors: ["#5f8ecc", "#e8b45a"],
     designSlug: "zvonok",
     pageTitle: "Выпускной 11 «А» — приглашение",
     theme: {
@@ -742,6 +773,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "shariki",
+    effect: "confetti",
+    effectColors: ["#e28ab0", "#8ac2e2", "#f2d488"],
     designSlug: "shariki",
     pageTitle: "Соне 3 года — приглашение",
     theme: {
@@ -786,6 +819,8 @@ export const DEMOS: DemoConfig[] = [
   },
   {
     slug: "svet",
+    effect: "bokeh",
+    effectColors: ["#cfd8c4"],
     designSlug: "svet",
     pageTitle: "Крестины Алексея — приглашение",
     theme: {
@@ -850,11 +885,16 @@ export interface CardDemoConfig {
   /** Есть только у «Открытки с анимацией» */
   music?: { tempo: number; notes: number[] };
   theme: { overlay: string; ink: string; accent: string; accentInk: string };
+  /** Анимация фона (см. ParticleLayer) */
+  effect?: "petals" | "snow" | "confetti" | "sparks" | "bokeh";
+  effectColors?: string[];
 }
 
 export const CARD_DEMOS: CardDemoConfig[] = [
   {
     slug: "otkrytka",
+    effect: "bokeh",
+    effectColors: ["#e0a94e"],
     designSlug: "svecha",
     pageTitle: "Ирине — с днём рождения (демо открытки)",
     photo: { src: "/templates/svecha.webp", alt: "Именинный торт с горящими свечами" },
@@ -875,6 +915,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "ogonki",
+    effect: "sparks",
+    effectColors: ["#e8b45a", "#f4d488"],
     designSlug: "ogonki",
     pageTitle: "Мама, с юбилеем! (демо открытки с анимацией)",
     photo: { src: "/templates/ogonki.webp", alt: "Бенгальский огонь в руке в сумерках" },
@@ -896,6 +938,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "mimoza",
+    effect: "petals",
+    effectColors: ["#e8a6bc", "#f2c3d4"],
     designSlug: "mimoza",
     pageTitle: "С 8 марта, наши дорогие! (демо открытки)",
     photo: { src: "/templates/mimoza.webp", alt: "Букет розовых тюльпанов" },
@@ -911,6 +955,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "hvoya",
+    effect: "snow",
+    effectColors: ["#ffffff"],
     designSlug: "hvoya",
     pageTitle: "С Новым годом, родные! (демо открытки)",
     photo: { src: "/templates/hvoya.webp", alt: "Заснеженная еловая ветка" },
@@ -926,6 +972,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "dvoe",
+    effect: "bokeh",
+    effectColors: ["#d0a468"],
     designSlug: "dvoe",
     pageTitle: "10 лет вместе (демо открытки)",
     photo: { src: "/templates/dvoe.webp", alt: "Пара идёт по улице, держась за руки" },
@@ -941,6 +989,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "spasibo",
+    effect: "bokeh",
+    effectColors: ["#a99ad4"],
     designSlug: "spasibo",
     pageTitle: "Спасибо, Мария Ивановна (демо открытки)",
     photo: { src: "/templates/spasibo.webp", alt: "Рука протягивает букет цветов" },
@@ -956,6 +1006,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "kollege",
+    effect: "confetti",
+    effectColors: ["#66c2c6", "#e0879e", "#e8b45a", "#8fd07c"],
     designSlug: "kollege",
     pageTitle: "Никита, поздравляем! (демо открытки)",
     photo: { src: "/templates/kollege.webp", alt: "Разноцветное конфетти на бирюзовом фоне" },
@@ -971,6 +1023,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "polaroid",
+    effect: "bokeh",
+    effectColors: ["#c9b98a"],
     designSlug: "polaroid",
     pageTitle: "Держи флешбек (демо открытки)",
     photo: { src: "/templates/polaroid.webp", alt: "Стена с коллажем полароидных фотографий" },
@@ -986,6 +1040,8 @@ export const CARD_DEMOS: CardDemoConfig[] = [
   },
   {
     slug: "lepestki",
+    effect: "petals",
+    effectColors: ["#e0879e", "#d06a86"],
     designSlug: "lepestki",
     pageTitle: "Для самой любимой (демо открытки с музыкой)",
     photo: { src: "/templates/lepestki.webp", alt: "Нежные розово-красные цветы крупным планом" },

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { CardDemoConfig } from "@/lib/demos";
+import { ParticleLayer } from "./ParticleLayer";
 
 /**
  * Движок демо-открытки: фото на весь экран, строки поздравления появляются
@@ -14,15 +15,17 @@ export function DemoCard({ demo }: { demo: CardDemoConfig }) {
 
   return (
     <div className="relative min-h-dvh" style={{ background: t.overlay, color: t.ink }}>
-      {/* Фото с затемнением */}
-      <Image
-        src={demo.photo.src}
-        alt={demo.photo.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-60"
-      />
+      {/* Фото с затемнением и медленным «живым» зумом */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src={demo.photo.src}
+          alt={demo.photo.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="animate-kenburns object-cover opacity-60"
+        />
+      </div>
       <div
         className="absolute inset-0"
         style={{
@@ -31,31 +34,12 @@ export function DemoCard({ demo }: { demo: CardDemoConfig }) {
         aria-hidden="true"
       />
 
-      {/* Парящие огоньки для анимированной открытки */}
-      {demo.music && (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          {[
-            ["12%", "22%", "0s"],
-            ["82%", "16%", "1.2s"],
-            ["68%", "38%", "2.4s"],
-            ["24%", "52%", "0.8s"],
-            ["88%", "62%", "1.8s"],
-            ["8%", "76%", "2.8s"],
-          ].map(([left, top, delay], i) => (
-            <span
-              key={i}
-              className="animate-float-slow absolute size-1.5 rounded-full"
-              style={{
-                left,
-                top,
-                background: t.accent,
-                boxShadow: `0 0 12px 3px ${t.accent}88`,
-                animationDelay: delay as string,
-              }}
-            />
-          ))}
-        </div>
-      )}
+      {/* Анимированный фон: искры, лепестки, снег, конфетти или боке */}
+      <ParticleLayer
+        effect={demo.effect}
+        colors={demo.effectColors ?? [t.accent]}
+        position="absolute"
+      />
 
       <main className="relative z-10 mx-auto flex min-h-dvh max-w-lg flex-col items-center justify-end px-6 pb-10 pt-24 text-center">
         <p className="animate-fade-up text-xs uppercase tracking-[0.35em] opacity-80">

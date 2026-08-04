@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { DemoConfig } from "@/lib/demos";
 import { Reveal } from "./Reveal";
+import { ParticleLayer } from "./ParticleLayer";
 
 /**
  * Движок живого демо-приглашения. Полностью конфигурируется из lib/demos.ts:
@@ -25,6 +26,7 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
         ["--accent-fg" as string]: t.accentInk,
       }}
     >
+      <ParticleLayer effect={demo.effect} colors={demo.effectColors} />
       <main className="mx-auto max-w-lg px-5 pb-16">
         {/* Обложка */}
         <header className="flex min-h-dvh flex-col items-center justify-center py-16 text-center">

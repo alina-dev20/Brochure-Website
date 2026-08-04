@@ -198,6 +198,74 @@ body::after {
   animation: demo-scroll 14s ease-in-out infinite;
 }
 
+/* ---- Анимированные частицы в демо (снег, лепестки, искры, конфетти, боке) ---- */
+@keyframes p-fall {
+  0% {
+    transform: translateY(-8vh) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(22vh) translateX(3vw) rotate(90deg);
+  }
+  50% {
+    transform: translateY(52vh) translateX(-2vw) rotate(200deg);
+  }
+  75% {
+    transform: translateY(82vh) translateX(3vw) rotate(300deg);
+  }
+  100% {
+    transform: translateY(112vh) translateX(-1vw) rotate(390deg);
+  }
+}
+@keyframes p-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-55vh) translateX(2.5vw) scale(0.7);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-108vh) translateX(-2vw) scale(0.35);
+    opacity: 0;
+  }
+}
+@keyframes p-twinkle {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translateY(-3.5vh) scale(1.15);
+  }
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.09);
+  }
+}
+.animate-kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+.particle {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    display: none;
+  }
+}
+
 /* Без JavaScript reveal-блоки остаются видимыми */
 @media (scripting: none) {
   .reveal {
