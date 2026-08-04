@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PhoneMockup } from "./PhoneMockup";
 
@@ -53,12 +54,16 @@ export function HeroPhoneDemo() {
               наша история
             </p>
             <div className="grid grid-cols-2 gap-2">
-              {["#ddd2c0", "#cfc6b4", "#e4dccb", "#d6cab2"].map((c, i) => (
-                <div
-                  key={i}
-                  className="aspect-square rounded-lg"
-                  style={{ background: `linear-gradient(150deg, ${c}, #b8a98e)` }}
-                />
+              {[1, 2, 3, 4].map((n) => (
+                <div key={n} className="relative aspect-square overflow-hidden rounded-lg">
+                  <Image
+                    src={`/demo/tishina-${n}.webp`}
+                    alt=""
+                    fill
+                    sizes="120px"
+                    className="object-cover"
+                  />
+                </div>
               ))}
             </div>
           </div>

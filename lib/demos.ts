@@ -31,8 +31,8 @@ export interface DemoConfig {
   timing: { time: string; label: string }[];
   address: { title: string; line: string; mapQuery: string };
   dresscode?: { label: string; colors: string[] };
-  /** Градиентные заглушки вместо фото */
-  gallery: { from: string; to: string; label: string }[];
+  /** Фото галереи; без src рисуется градиентная заглушка */
+  gallery: { from: string; to: string; label: string; src?: string; alt?: string }[];
   music: { tempo: number; notes: number[] };
   rsvp: { deadline: string; question: string };
 }
@@ -79,10 +79,10 @@ export const DEMOS: DemoConfig[] = [
       colors: ["#e8e2d6", "#c9bfa8", "#8c8272", "#4a443a", "#a15e3b"],
     },
     gallery: [
-      { from: "#ddd2c0", to: "#b8a98e", label: "Наша первая осень" },
-      { from: "#cfc6b4", to: "#a3987f", label: "Путешествие в горы" },
-      { from: "#e4dccb", to: "#c2b394", label: "Тот самый вечер" },
-      { from: "#d6cab2", to: "#ab9c7d", label: "Помолвка" },
+      { from: "#ddd2c0", to: "#b8a98e", label: "Наша первая осень", src: "/demo/tishina-1.webp", alt: "Пара идёт по осенней дороге в лесу" },
+      { from: "#cfc6b4", to: "#a3987f", label: "Путешествие в горы", src: "/demo/tishina-2.webp", alt: "Пара на скале на фоне гор на закате" },
+      { from: "#e4dccb", to: "#c2b394", label: "Тот самый вечер", src: "/demo/tishina-3.webp", alt: "Свечи на деревянном столе, руки рядом" },
+      { from: "#d6cab2", to: "#ab9c7d", label: "Помолвка", src: "/demo/tishina-4.webp", alt: "Руки пары в момент помолвки" },
     ],
     music: { tempo: 72, notes: [261.63, 329.63, 392.0, 523.25, 392.0, 329.63] },
     rsvp: {
@@ -126,10 +126,10 @@ export const DEMOS: DemoConfig[] = [
       mapQuery: "Москва, улица Лесная 7",
     },
     gallery: [
-      { from: "#f4c98a", to: "#e0862f", label: "Мне 5" },
-      { from: "#a8d8c0", to: "#5fae8a", label: "Лето на даче" },
-      { from: "#a9c8ee", to: "#5f8ecc", label: "Первый велосипед" },
-      { from: "#f2b8c6", to: "#dd7693", label: "С Бимом" },
+      { from: "#f4c98a", to: "#e0862f", label: "Мне 5", src: "/demo/konfetti-1.webp", alt: "Дети играют с воздушными шарами" },
+      { from: "#a8d8c0", to: "#5fae8a", label: "Лето на даче", src: "/demo/konfetti-2.webp", alt: "Мальчик сидит на летней лужайке" },
+      { from: "#a9c8ee", to: "#5f8ecc", label: "Первый велосипед", src: "/demo/konfetti-3.webp", alt: "Мальчик едет на велосипеде" },
+      { from: "#f2b8c6", to: "#dd7693", label: "С Бимом", src: "/demo/konfetti-4.webp", alt: "Мальчик обнимает собаку" },
     ],
     music: { tempo: 132, notes: [392.0, 493.88, 587.33, 783.99, 587.33, 493.88] },
     rsvp: {
@@ -177,10 +177,10 @@ export const DEMOS: DemoConfig[] = [
       colors: ["#16130e", "#3a3226", "#6b5d3f", "#d0aa4e"],
     },
     gallery: [
-      { from: "#3a3226", to: "#211c14", label: "1976" },
-      { from: "#4a3f2c", to: "#2b2418", label: "1994" },
-      { from: "#5c4c30", to: "#332a1a", label: "2008" },
-      { from: "#6b5a38", to: "#3d321f", label: "Сегодня" },
+      { from: "#3a3226", to: "#211c14", label: "1976", src: "/demo/gran-1.webp", alt: "Архивное чёрно-белое семейное фото" },
+      { from: "#4a3f2c", to: "#2b2418", label: "1994", src: "/demo/gran-2.webp", alt: "Старое семейное фото у деревьев" },
+      { from: "#5c4c30", to: "#332a1a", label: "2008", src: "/demo/gran-3.webp", alt: "Семейный портрет у дома, архивный снимок" },
+      { from: "#6b5a38", to: "#3d321f", label: "Сегодня", src: "/demo/gran-4.webp", alt: "Портрет юбиляра сегодня" },
     ],
     music: { tempo: 84, notes: [196.0, 246.94, 293.66, 392.0, 293.66, 246.94] },
     rsvp: {
@@ -228,10 +228,10 @@ export const DEMOS: DemoConfig[] = [
       colors: ["#0d1f17", "#1f4030", "#f0b64e", "#b23a48"],
     },
     gallery: [
-      { from: "#1f4030", to: "#132a1f", label: "Корпоратив-2025" },
-      { from: "#2b503c", to: "#183024", label: "Летний выезд" },
-      { from: "#365e46", to: "#1d3628", label: "Команда" },
-      { from: "#41684e", to: "#223c2b", label: "Офис в декабре" },
+      { from: "#1f4030", to: "#132a1f", label: "Корпоратив-2025", src: "/demo/elka-1.webp", alt: "Коллеги поднимают бокалы на празднике" },
+      { from: "#2b503c", to: "#183024", label: "Летний выезд", src: "/demo/elka-2.webp", alt: "Команда на летнем выезде на природе" },
+      { from: "#365e46", to: "#1d3628", label: "Команда", src: "/demo/elka-3.webp", alt: "Команда работает за ноутбуками" },
+      { from: "#41684e", to: "#223c2b", label: "Офис в декабре", src: "/demo/elka-4.webp", alt: "Огни новогодней ёлки" },
     ],
     music: { tempo: 108, notes: [329.63, 415.3, 493.88, 659.25, 493.88, 415.3] },
     rsvp: {

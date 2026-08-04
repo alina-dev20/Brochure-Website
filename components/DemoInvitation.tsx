@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { DemoConfig } from "@/lib/demos";
@@ -78,13 +79,25 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
           <SectionTitle t={t}>наша галерея</SectionTitle>
           <div className="grid grid-cols-2 gap-3">
             {demo.gallery.map((g, i) => (
-              <figure key={i} className={i % 3 === 0 ? "row-span-1" : ""}>
-                <div
-                  className="aspect-4/5 w-full rounded-2xl"
-                  style={{ background: `linear-gradient(150deg, ${g.from}, ${g.to})` }}
-                  role="img"
-                  aria-label={`Фото: ${g.label}`}
-                />
+              <figure key={i}>
+                {g.src ? (
+                  <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={g.src}
+                      alt={g.alt ?? g.label}
+                      fill
+                      sizes="(max-width: 640px) 45vw, 250px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="aspect-4/5 w-full rounded-2xl"
+                    style={{ background: `linear-gradient(150deg, ${g.from}, ${g.to})` }}
+                    role="img"
+                    aria-label={`Фото: ${g.label}`}
+                  />
+                )}
                 <figcaption className="mt-1.5 text-xs" style={{ color: t.muted }}>
                   {g.label}
                 </figcaption>
@@ -92,7 +105,7 @@ export function DemoInvitation({ demo }: { demo: DemoConfig }) {
             ))}
           </div>
           <p className="mt-3 text-center text-xs" style={{ color: t.muted }}>
-            В вашем приглашении здесь будут настоящие фотографии
+            Фотографии — для примера: в вашем приглашении будут ваши снимки
           </p>
         </Reveal>
 
