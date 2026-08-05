@@ -8,6 +8,7 @@ import { formatPrice } from "@/lib/pricing";
 import { getOccasion } from "@/lib/occasions";
 import { BLUR } from "@/lib/blur-data";
 import { DesignPreview } from "./DesignPreview";
+import { PhoneMockup } from "./PhoneMockup";
 
 /**
  * Карточка дизайна: превью в мокапе телефона, фото с blur-заглушкой и
@@ -31,11 +32,11 @@ export function DesignCard({ design }: { design: Design }) {
       <div className="relative">
         <Link
           href={`/design/${design.slug}`}
-          className="relative block overflow-hidden rounded-[1.7rem] border-4 border-fg/85 bg-fg/85"
+          className="block"
           tabIndex={-1}
           aria-hidden="true"
         >
-          <div className="relative aspect-[9/16] overflow-hidden rounded-[1.45rem]">
+          <PhoneMockup width="w-full" screenAspect="9 / 16">
             {design.photo ? (
               <Image
                 src={design.photo.src}
@@ -54,44 +55,41 @@ export function DesignCard({ design }: { design: Design }) {
                 <DesignPreview design={design} />
               </div>
             )}
-            {/* «Чёлка» телефона */}
-            <span
-              className="absolute left-1/2 top-2 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-fg/70"
-              aria-hidden="true"
-            />
             {/* Подпись поверх фото — как заголовок приглашения */}
             <span
-              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/55 to-transparent px-4 pb-4 pt-10 text-center font-display text-2xl font-medium text-white"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/55 to-transparent px-4 pb-5 pt-10 text-center font-display text-2xl font-medium text-white"
               aria-hidden="true"
             >
               {design.preview.caption}
             </span>
-          </div>
+          </PhoneMockup>
         </Link>
 
-        {/* Бейджи */}
-        <div className="absolute left-3 top-3 z-20 flex flex-col items-start gap-1.5">
+        {/* Бейджи: полупрозрачный фон + блюр, чтобы читались поверх любого превью */}
+        <div className="absolute left-5 top-5 z-20 flex flex-col items-start gap-1.5">
           {design.popularity >= 85 ? (
-            <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-fg shadow-sm">
+            <span className="rounded-full bg-accent/70 px-3 py-1 text-xs font-semibold text-accent-fg backdrop-blur-md transition-colors duration-300 group-hover:bg-accent/85">
               Хит
             </span>
           ) : design.isNew ? (
-            <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-fg shadow-sm">
+            <span className="rounded-full bg-accent/70 px-3 py-1 text-xs font-semibold text-accent-fg backdrop-blur-md transition-colors duration-300 group-hover:bg-accent/85">
               Новинка
             </span>
           ) : null}
           {hasAnimationBadge && (
-            <span className="rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+            <span className="rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-colors duration-300 group-hover:bg-black/70">
               С анимацией
             </span>
           )}
         </div>
-        <span className="absolute right-3 top-3 z-20 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+        {/* Цена — в нижнем углу; на десктопе уступает место кнопкам при hover,
+            на touch скрыта (цена продублирована в текстовой части карточки) */}
+        <span className="absolute bottom-5 right-5 z-10 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-opacity duration-300 [@media(hover:hover)]:group-hover:opacity-0 [@media(hover:none)]:hidden">
           от {formatPrice(price)}
         </span>
 
         {/* Кнопки поверх превью: hover на десктопе, всегда — на touch */}
-        <div className="absolute inset-x-4 bottom-4 z-20 grid grid-cols-2 gap-2 transition-all duration-300 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-focus-within:translate-y-0 [@media(hover:hover)]:group-focus-within:opacity-100 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
+        <div className="absolute inset-x-5 bottom-5 z-20 grid grid-cols-2 gap-2 transition-all duration-300 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-focus-within:translate-y-0 [@media(hover:hover)]:group-focus-within:opacity-100 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
           {design.demoSlug ? (
             <Link
               href={`/demo/${design.demoSlug}`}

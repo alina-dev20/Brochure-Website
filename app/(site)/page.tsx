@@ -6,6 +6,8 @@ import { HeroPhoneDemo } from "@/components/HeroPhoneDemo";
 import { DesignCard } from "@/components/DesignCard";
 import { Accordion } from "@/components/Accordion";
 import { Testimonials } from "@/components/Testimonials";
+import { ReviewForm } from "@/components/ReviewForm";
+import { TESTIMONIALS } from "@/lib/testimonials";
 import { Calculator } from "@/components/Calculator";
 import { LeadForm } from "@/components/LeadForm";
 import { JsonLd } from "@/components/JsonLd";
@@ -61,6 +63,20 @@ export default function HomePage() {
           url: SITE.url,
           description: SITE.description,
           sameAs: CONTACT_URLS,
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: (
+              TESTIMONIALS.reduce((sum, t) => sum + t.rating, 0) / TESTIMONIALS.length
+            ).toFixed(1),
+            reviewCount: TESTIMONIALS.length,
+            bestRating: 5,
+          },
+          review: TESTIMONIALS.map((t) => ({
+            "@type": "Review",
+            author: { "@type": "Person", name: t.name },
+            reviewBody: t.text,
+            reviewRating: { "@type": "Rating", ratingValue: t.rating, bestRating: 5 },
+          })),
         }}
       />
 
@@ -78,9 +94,11 @@ export default function HomePage() {
             <p className="animate-fade-up text-eyebrow">
               электронные приглашения и открытки
             </p>
-            <h1 className="h-display animate-fade-up mt-4 text-4xl sm:text-6xl lg:text-7xl">
+            {/* Единая гарнитура первого экрана: заголовок наследует --font-body,
+                уровни различаются размером, насыщенностью и цветом */}
+            <h1 className="animate-fade-up mt-4 text-balance text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
               Приглашение, которое{" "}
-              <em className="italic text-accent">открывают</em> с восторгом
+              <em className="not-italic text-accent">открывают</em> с восторгом
             </h1>
             <p
               className="animate-fade-up mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
@@ -125,21 +143,28 @@ export default function HomePage() {
             Не только свадьбы
           </h2>
         </Reveal>
-        <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {/* Строгая сетка: карточки одной высоты (h-full по всей цепочке),
+            точка → текст → стрелка в одной строке, min-h резервирует две строки */}
+        <ul className="mt-10 grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {OCCASIONS.map((o, i) => (
-            <Reveal as="li" key={o.slug} delay={Math.min(i * 40, 320)}>
+            <Reveal as="li" key={o.slug} className="h-full" delay={Math.min(i * 40, 320)}>
               <Link
                 href={`/catalog/${o.slug}`}
-                className="group flex h-full flex-col justify-between gap-6 rounded-3xl border border-line bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5 sm:p-5"
+                className="group flex h-full items-start gap-3 rounded-3xl border border-line bg-card p-4 text-sm font-semibold leading-snug transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5 sm:p-5 sm:text-base"
                 data-accent={o.slug}
               >
+                {/* Точка выровнена по центру первой строки текста (отступ в em —
+                    масштабируется вместе с размером шрифта карточки) */}
                 <span
-                  className="size-2.5 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
+                  className="mt-[0.33em] size-2.5 shrink-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
                   aria-hidden="true"
                 />
-                <span className="text-sm font-semibold leading-snug sm:text-base">
+                <span className="min-h-[2.75em]">
                   {o.title}
-                  <span className="ml-1 inline-block text-accent transition-transform duration-300 group-hover:translate-x-1">
+                  <span
+                    className="ml-1.5 inline-block text-accent transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
                     →
                   </span>
                 </span>
@@ -210,7 +235,12 @@ export default function HomePage() {
             {STEPS.map((s, i) => (
               <Reveal as="li" key={s.n} delay={Math.min(i * 80, 320)}>
                 <div className="flex h-full flex-col rounded-3xl border border-line bg-card p-6">
-                  <p className="font-display text-4xl text-accent">{s.n}</p>
+                  {/* Цифры — гарнитурой с маюскульными цифрами: у Cormorant цифры
+                      минускульные (3 и 4 с нижними выносами), из-за чего шаги
+                      выглядели «съехавшими». leading-none — одна базовая линия. */}
+                  <p className="text-4xl font-bold leading-none tracking-tight text-accent tabular-nums">
+                    {s.n}
+                  </p>
                   <h3 className="mt-4 font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
                 </div>
@@ -245,6 +275,7 @@ export default function HomePage() {
           <Reveal delay={120} className="mt-10">
             <Testimonials />
           </Reveal>
+          <ReviewForm />
         </div>
       </section>
 

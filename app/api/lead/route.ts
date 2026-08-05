@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { isRateLimited, clientIp } from "@/lib/rate-limit";
 
 /**
  * Приём заявок: валидация → защита от спама → Telegram-группа менеджеров
@@ -23,23 +24,6 @@ interface LeadPayload {
   page?: string;
   /** honeypot: реальные пользователи это поле не видят и не заполняют */
   website?: string;
-}
-
-// Простейший rate limit в памяти процесса: до 5 заявок в час с одного IP.
-const RATE_LIMIT = 5;
-const RATE_WINDOW_MS = 60 * 60 * 1000;
-const hits = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const list = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  if (list.length >= RATE_LIMIT) {
-    hits.set(ip, list);
-    return true;
-  }
-  list.push(now);
-  hits.set(ip, list);
-  return false;
 }
 
 const esc = (s: string) =>
@@ -72,9 +56,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
-  if (isRateLimited(ip)) {
+  const ip = clientIp(req.headers);
+  if (isRateLimited(`lead:${ip}`)) {
     return NextResponse.json(
       { error: "Слишком много заявок с вашего адреса. Попробуйте позже." },
       { status: 429 },

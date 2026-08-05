@@ -11,8 +11,9 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-fg: var(--accent-fg);
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-body);
 }
 
 :root {
@@ -46,7 +47,7 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
@@ -306,16 +307,6 @@ body::after {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-/* ---- Мокап телефона ---- */
-.phone-frame {
-  border-radius: 2.6rem;
-  border: 1px solid var(--line);
-  background: var(--card);
-  box-shadow:
-    0 24px 60px -20px rgb(0 0 0 / 0.28),
-    0 0 0 8px color-mix(in oklab, var(--fg) 6%, transparent);
 }
 
 /* Тонкий скроллбар для внутренних прокруток */
