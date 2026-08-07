@@ -309,6 +309,21 @@ body::after {
   color: var(--muted);
 }
 
+/* ---- Селекты: своя стрелка вместо системной ----
+   Нативная стрелка прижимается к краю поля и на большом скруглении выглядит
+   съехавшей. Рисуем свой шеврон с одинаковым отступом от правого края. */
+.select-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.5l4 4 4-4' stroke='%236d685d' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  padding-right: 2.75rem;
+}
+.dark .select-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.5l4 4 4-4' stroke='%23a49e91' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 /* Тонкий скроллбар для внутренних прокруток */
 .thin-scroll {
   scrollbar-width: thin;

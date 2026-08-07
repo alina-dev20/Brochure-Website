@@ -120,7 +120,7 @@ export function ReviewForm() {
                   </label>
                   <label className="grid gap-1.5 text-sm font-medium">
                     Повод
-                    <select name="occasion" defaultValue="" className={inputCls}>
+                    <select name="occasion" defaultValue="" className={`${inputCls} select-field`}>
                       <option value="">Выберите повод</option>
                       {OCCASIONS.map((o) => (
                         <option key={o.slug} value={o.title}>

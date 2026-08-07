@@ -51,7 +51,7 @@ export function Calculator() {
           <select
             value={occasion}
             onChange={(e) => setOccasion(e.target.value)}
-            className="w-full rounded-2xl border border-line bg-bg px-4 py-3.5 text-sm outline-none focus:border-accent"
+            className="select-field w-full rounded-2xl border border-line bg-bg px-4 py-3.5 text-sm outline-none focus:border-accent"
           >
             {OCCASIONS.map((o) => (
               <option key={o.slug} value={o.title}>

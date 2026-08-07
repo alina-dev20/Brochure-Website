@@ -158,7 +158,7 @@ export function CatalogClient() {
             <select
               value={price}
               onChange={(e) => setParam("price", e.target.value)}
-              className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium text-fg outline-none focus:border-accent"
+              className="select-field rounded-full border border-line bg-card px-4 py-2 text-sm font-medium text-fg outline-none focus:border-accent"
             >
               {PRICE_FILTERS.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -172,7 +172,7 @@ export function CatalogClient() {
             <select
               value={sort}
               onChange={(e) => setParam("sort", e.target.value)}
-              className="rounded-full border border-line bg-card px-4 py-2 text-sm font-medium text-fg outline-none focus:border-accent"
+              className="select-field rounded-full border border-line bg-card px-4 py-2 text-sm font-medium text-fg outline-none focus:border-accent"
             >
               {SORTS.map((s) => (
                 <option key={s.id} value={s.id}>

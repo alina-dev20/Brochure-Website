@@ -172,7 +172,7 @@ export function LeadForm({ initial }: { initial?: LeadPrefill }) {
             name="occasion"
             value={occasion}
             onChange={(e) => setOccasion(e.target.value)}
-            className={inputCls}
+            className={`${inputCls} select-field`}
           >
             <option value="">Выберите повод</option>
             {OCCASIONS.map((o) => (
