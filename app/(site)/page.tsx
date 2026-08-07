@@ -94,9 +94,7 @@ export default function HomePage() {
             <p className="animate-fade-up text-eyebrow">
               электронные приглашения и открытки
             </p>
-            {/* Единая гарнитура первого экрана: заголовок наследует --font-body,
-                уровни различаются размером, насыщенностью и цветом */}
-            <h1 className="animate-fade-up mt-4 text-balance text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="h-display animate-fade-up mt-4 text-4xl sm:text-6xl lg:text-7xl">
               Приглашение, которое{" "}
               <em className="not-italic text-accent">открывают</em> с восторгом
             </h1>
