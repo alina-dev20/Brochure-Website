@@ -157,14 +157,14 @@ export default function HomePage() {
                   className="mt-[0.33em] size-2.5 shrink-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
                   aria-hidden="true"
                 />
-                <span className="min-h-[2.75em]">
-                  {o.title}
-                  <span
-                    className="ml-1.5 inline-block text-accent transition-transform duration-300 group-hover:translate-x-1"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
+                <span className="min-h-[2.75em] flex-1">{o.title}</span>
+                {/* Стрелка — отдельный элемент строки, прижата к правому краю:
+                    позиция одинакова во всех карточках и не зависит от переноса текста */}
+                <span
+                  className="shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  →
                 </span>
               </Link>
             </Reveal>
