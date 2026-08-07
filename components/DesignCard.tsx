@@ -36,7 +36,7 @@ export function DesignCard({ design }: { design: Design }) {
           tabIndex={-1}
           aria-hidden="true"
         >
-          <PhoneMockup width="w-full" screenAspect="9 / 16">
+          <PhoneMockup width="w-full">
             {design.photo ? (
               <Image
                 src={design.photo.src}
@@ -68,23 +68,21 @@ export function DesignCard({ design }: { design: Design }) {
         {/* Бейджи: полупрозрачный фон + блюр, чтобы читались поверх любого превью */}
         <div className="absolute left-5 top-5 z-20 flex flex-col items-start gap-1.5">
           {design.popularity >= 85 ? (
-            <span className="rounded-full bg-accent/70 px-3 py-1 text-xs font-semibold text-accent-fg backdrop-blur-md transition-colors duration-300 group-hover:bg-accent/85">
+            <span className="rounded-full bg-accent/60 px-3 py-1 text-xs font-semibold text-accent-fg backdrop-blur-md transition-colors duration-300 group-hover:bg-accent/75">
               Хит
             </span>
           ) : design.isNew ? (
-            <span className="rounded-full bg-accent/70 px-3 py-1 text-xs font-semibold text-accent-fg backdrop-blur-md transition-colors duration-300 group-hover:bg-accent/85">
+            <span className="rounded-full bg-accent/60 px-3 py-1 text-xs font-semibold text-accent-fg backdrop-blur-md transition-colors duration-300 group-hover:bg-accent/75">
               Новинка
             </span>
           ) : null}
           {hasAnimationBadge && (
-            <span className="rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-colors duration-300 group-hover:bg-black/70">
+            <span className="rounded-full bg-black/45 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-colors duration-300 group-hover:bg-black/60">
               С анимацией
             </span>
           )}
         </div>
-        {/* Цена — в нижнем углу; на десктопе уступает место кнопкам при hover,
-            на touch скрыта (цена продублирована в текстовой части карточки) */}
-        <span className="absolute bottom-5 right-5 z-10 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-opacity duration-300 [@media(hover:hover)]:group-hover:opacity-0 [@media(hover:none)]:hidden">
+        <span className="absolute right-5 top-5 z-20 rounded-full bg-black/45 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-colors duration-300 group-hover:bg-black/60">
           от {formatPrice(price)}
         </span>
 
