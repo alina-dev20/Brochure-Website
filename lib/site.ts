@@ -1,10 +1,20 @@
 /**
  * Общие настройки сайта. Контакты менеджеров — в lib/contacts.ts.
  */
+/**
+ * Адрес продакшена. Пустая переменная приравнивается к отсутствующей
+ * (иначе new URL("") роняет сборку); без явного адреса на Vercel
+ * берём автоматический домен деплоя из VERCEL_URL.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+  "https://priglasi.example";
+
 export const SITE = {
   name: "Пригласи",
   /** Адрес продакшена — используется в метаданных, sitemap и Schema.org */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://priglasi.example",
+  url: siteUrl,
   description:
     "Студия электронных приглашений: мини-сайт по ссылке с анимацией, музыкой, фотогалереей, картой, таймером и формой подтверждения гостей. Свадьбы, дни рождения, юбилеи и ещё 15 поводов.",
   /** Срок изготовления по умолчанию */
